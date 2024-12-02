@@ -6,8 +6,8 @@ public class MoveJump extends Move {
       this.checker = checker;
       this.destination = destination;
    }
-  
-  
+
+
    public boolean isJump() {
       return true;
    }

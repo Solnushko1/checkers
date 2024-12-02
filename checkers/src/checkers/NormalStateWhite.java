@@ -36,13 +36,13 @@ public class NormalStateWhite implements CheckerState,Serializable {
          validJumps.add(new MoveJump(c, c.getPosition().upRightJump()));
          found = true;
       }
-      // Проверка прыжков назад (вверх для черных).
-      if (GameSearch.validWhiteJump(c.getPosition(), c.getPosition().upLeftJump(), board)) {
-         validJumps.add(new MoveJump(c, c.getPosition().upLeftJump()));
+      // Проверка прыжков назад (вниз для белых).
+      if (GameSearch.validWhiteJump(c.getPosition(), c.getPosition().downLeftJump(), board)) {
+         validJumps.add(new MoveJump(c, c.getPosition().downLeftJump()));
          found = true;
       }
-      if (GameSearch.validWhiteJump(c.getPosition(), c.getPosition().upRightJump(), board)) {
-         validJumps.add(new MoveJump(c, c.getPosition().upRightJump()));
+      if (GameSearch.validWhiteJump(c.getPosition(), c.getPosition().downRightJump(), board)) {
+         validJumps.add(new MoveJump(c, c.getPosition().downRightJump()));
          found = true;
       }
       return found;

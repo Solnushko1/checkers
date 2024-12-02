@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class FormattedInput {   
    
-   private StreamTokenizer keyboard = new StreamTokenizer(
+   private final StreamTokenizer keyboard = new StreamTokenizer(
                                      new InputStreamReader(System.in));
 
 

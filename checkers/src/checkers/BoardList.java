@@ -59,11 +59,11 @@ public class BoardList {
 
    public String toString() {
       BoardIterator iterator = getIterator();
-      String s = "BoardList: ";
+      StringBuilder s = new StringBuilder("BoardList: ");
       while (iterator.hasNext()) {
-         s = s + iterator.next().toString();
-         if (iterator.hasNext()) s = s + " , ";
+         s.append(iterator.next().toString());
+         if (iterator.hasNext()) s.append(" , ");
       }
-      return s;
+      return s.toString();
    }
 }

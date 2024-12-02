@@ -17,13 +17,12 @@ public class MoveList implements Serializable{
    public void add(Move c) {
       if (moveList == null) {
          moveList = c;
-         last = c;
       }
       else {
          last.setNext(c);
-         last = c;
-      }               
-      listSize++;
+      }
+       last = c;
+       listSize++;
    } 
    
    

@@ -104,7 +104,7 @@ public class Board implements Serializable {
       for (int y = 0; y < 8; y++) {
          for (int x = 0; x < 8; x++) {
             // Определяем цвет клетки
-            String cellColor = ((x + y) % 2 == 0) ? "dark" : "light";  // dark - темная клетка, light - светлая клетка
+            String cellColor = ((x + y) % 2 != 0) ? "dark" : "light";  // dark - темная клетка, light - светлая клетка
 
             if (stringBoard[x][y] != null) {
                s = s + "| " + stringBoard[x][y] + " ";

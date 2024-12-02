@@ -69,22 +69,24 @@ public class CheckersPanel extends JPanel {
 
 
     private void initAllpositions() {
-        int lignes = 0;
+        int row = 0;
+
         for (int i = 0; i < 32; i++) {
-            Point blackpos1 = new Point(5, 5);
+            Point position = new Point();
+
             if (i != 0 && i % 4 == 0) {
-                lignes++;
-            }
-            if (lignes % 2 == 0) {
-                blackpos1.x = (i % 4) * 75 * 2 + 5;
-                blackpos1.y = lignes * 75 + 5;
-            }
-            else {
-                blackpos1.x = (i % 4) * 75 * 2 + 5 + 75;
-                blackpos1.y = lignes * 75 + 5;
+                row++;
             }
 
-            allBoardPoints.add(blackpos1);
+            if (row % 2 == 0) {
+                position.x = (i % 4) * 75 * 2 + 5 + 75;
+            } else {
+                position.x = (i % 4) * 75 * 2 + 5;
+            }
+
+            position.y = row * 75 + 5;
+
+            allBoardPoints.add(position);
         }
     }
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Coordinate implements Serializable {
 
-    private int c;
+    private final int c;
 
     public Coordinate(int c) {
         this.c = c;
@@ -33,19 +33,21 @@ public class Coordinate implements Serializable {
     }
 
     public int column() {
-        if (row() % 2 == 0) {
+        if (row() % 2 != 0) {
             return (((c - (row() * 4)) * 2) - 1);
         } else {
             return (((c - (row() * 4)) * 2) - 2);
         }
     }
 
+
+
     public String toString() {
         return "" + c;
     }
 
     public Coordinate upLeftMove() {
-        if (row() % 2 == 0) {
+        if (row() % 2 != 0) {
             return new Coordinate(c - 5);
         } else {
             return new Coordinate(c - 4);
@@ -53,7 +55,7 @@ public class Coordinate implements Serializable {
     }
 
     public Coordinate upRightMove() {
-        if (row() % 2 == 0) {
+        if (row() % 2 != 0) {
             return new Coordinate(c - 4);
         } else {
             return new Coordinate(c - 3);
@@ -61,7 +63,7 @@ public class Coordinate implements Serializable {
     }
 
     public Coordinate downLeftMove() {
-        if (row() % 2 == 0) {
+        if (row() % 2 != 0) {
             return new Coordinate(c + 3);
         } else {
             return new Coordinate(c + 4);
@@ -69,7 +71,7 @@ public class Coordinate implements Serializable {
     }
 
     public Coordinate downRightMove() {
-        if (row() % 2 == 0) {
+        if (row() % 2 != 0) {
             return new Coordinate(c + 4);
         } else {
             return new Coordinate(c + 5);

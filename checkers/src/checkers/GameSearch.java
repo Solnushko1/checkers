@@ -277,9 +277,10 @@ public class GameSearch {
     private static boolean validUpJump(Coordinate from, Coordinate to, int color, Board board) {
         boolean basis = validCoordinate(from) && validCoordinate(to)
                 && board.vacantCoordinate(to) && !board.vacantCoordinate(from)
-                && (board.getChecker(from).getColor() == color)
-                && (from.row() - to.row() == 2); // Проверка на движение на две строки вверх.
-        if (basis) {
+                && (board.getChecker(from).getColor() == color);
+
+        // Проверка прыжков вверх.
+        if (basis && (from.row() - to.row() == 2)) { // Движение вверх.
             if (from.upLeftJump().equals(to)) { // Проверка верхнего левого прыжка.
                 return (!board.vacantCoordinate(from.upLeftMove())
                         && (board.getChecker(from.upLeftMove()).getColor() == opponent(color)));
@@ -288,16 +289,9 @@ public class GameSearch {
                         && (board.getChecker(from.upRightMove()).getColor() == opponent(color)));
             }
         }
-        return false;
-    }
 
-
-    private static boolean validDownJump(Coordinate from, Coordinate to, int color, Board board) {
-        boolean basis = validCoordinate(from) && validCoordinate(to)
-                && board.vacantCoordinate(to) && !board.vacantCoordinate(from)
-                && (board.getChecker(from).getColor() == color)
-                && (to.row() - from.row() == 2); // Проверка на движение на две строки вниз.
-        if (basis) {
+        // Проверка прыжков вниз (добавлено).
+        if (basis && (to.row() - from.row() == 2)) { // Движение вниз.
             if (from.downLeftJump().equals(to)) { // Проверка нижнего левого прыжка.
                 return (!board.vacantCoordinate(from.downLeftMove())
                         && (board.getChecker(from.downLeftMove()).getColor() == opponent(color)));
@@ -306,6 +300,38 @@ public class GameSearch {
                         && (board.getChecker(from.downRightMove()).getColor() == opponent(color)));
             }
         }
+
+        return false;
+    }
+
+
+    private static boolean validDownJump(Coordinate from, Coordinate to, int color, Board board) {
+        boolean basis = validCoordinate(from) && validCoordinate(to)
+                && board.vacantCoordinate(to) && !board.vacantCoordinate(from)
+                && (board.getChecker(from).getColor() == color);
+
+        // Проверка прыжков вниз.
+        if (basis && (to.row() - from.row() == 2)) {
+            if (from.downLeftJump().equals(to)) { // Проверка нижнего левого прыжка.
+                return (!board.vacantCoordinate(from.downLeftMove())
+                        && (board.getChecker(from.downLeftMove()).getColor() == opponent(color)));
+            } else if (from.downRightJump().equals(to)) { // Проверка нижнего правого прыжка.
+                return (!board.vacantCoordinate(from.downRightMove())
+                        && (board.getChecker(from.downRightMove()).getColor() == opponent(color)));
+            }
+        }
+
+        // Проверка прыжков вверх (добавлено).
+        if (basis && (from.row() - to.row() == 2)) { // Движение вверх.
+            if (from.upLeftJump().equals(to)) { // Проверка верхнего левого прыжка.
+                return (!board.vacantCoordinate(from.upLeftMove())
+                        && (board.getChecker(from.upLeftMove()).getColor() == opponent(color)));
+            } else if (from.upRightJump().equals(to)) { // Проверка верхнего правого прыжка.
+                return (!board.vacantCoordinate(from.upRightMove())
+                        && (board.getChecker(from.upRightMove()).getColor() == opponent(color)));
+            }
+        }
+
         return false;
     }
 

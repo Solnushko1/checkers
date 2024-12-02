@@ -40,8 +40,8 @@ public abstract class CheckerPosition extends Position implements Serializable{
       return checkerState.findValidMoves(this, board, moveList);
    }
 
-   public boolean findValidJumps(MoveList moveList, final Board board) {
-      return checkerState.findValidJumps(this, board, moveList);
+   public void findValidJumps(MoveList moveList, final Board board) {
+      checkerState.findValidJumps(this, board, moveList);
    }
 
    public String toString() {
